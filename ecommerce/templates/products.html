@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h2>PRODUCT PAGE</h2>
+
+
+<div class="row mt-3 ">
+    <div class="col-12  ">
+        <img src="{{cat.image.url}}" height="500px" width="100%"></div>
+    </div>
+<div class="row mt-3 px-3" style="margin-bottom:100px">
+    <div class="col-12">
+        <h1 class="text-center fw-bold text-dark mt-5 mb-5">{{cat.name}}</h1>
+
+        <p style="text-align:justify;line-height:2.5;" class="fs-5 ">{{cat.desc}}</p>
+    </div>
+</div>
+
+<div class="container mt-5 bg-warning" style="margin-bottom:100px">
+<div class="row ">
+    {%  for i in product %}
+    <div class="col-sm-4">
+        <div class="card mx-auto border border-3 border-light" style="width:20em;">
+            <img src="{{i.image.url}}" style="height:300px; width:300px" class="card-img-top " alt="">
+            <div class="card-body text-center">
+                <h5 class="card-title mb-3">{{i.name}}</h5>
+                <p><b>{{i.price}} Rs</b></p>
+
+                <a href="{% url 'shop:product_details' i.id %}" class="btn btn-secondary px-5 mb-2 fs-5">Details</a>
+                </div>
+            </div></div>
+        {% endfor %}
+</div></div>
+{% endblock %}

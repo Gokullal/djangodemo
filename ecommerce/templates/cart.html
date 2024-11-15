@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-3 p-5" style="margin-bottom:100px;">
+        <h3 class="text-center text-danger"><b>Shopping Cart</b></h3>
+
+    <div class="row">
+<!--        <h3 class="text-center text-dark">Shopping Cart</h3>-->
+        <div class="col-7">
+            <table class="table table-bordered text-center">
+                <tr class="bg-success"><th colspan="7">Cart Items</th></tr>
+                {% for i in cart %}
+                <tr class="bg-warning">
+                    <td class="p-3"><img src="{{i.product.image.url}}" height="150px" width="150px"></td>
+                    <td class="p-3"><b>Product Name : {{i.product.name}}</b></td>
+                    <td class="p-3"><b>Quantity : {{i.quantity}} kg<br>
+                    unit price : {{i.product.price}}$</b></td>
+                    <td><b>subtotal : {{i.subtotal}}</b></td>
+
+
+                    <td>
+                        {% if i.product.stock > 0 %}
+                        <a href="{% url 'cart:addtocart' i.product.id %}"><i class="fa fa-plus-circle text-primary fs-4" aria-hidden="true"></i></a>
+                    <a href="{% url 'cart:cartremove' i.product.id %}"><i class="fa fa-minus-circle text-primary fs-4" aria-hidden="true"></i></a>
+                    <a href="{% url 'cart:cartdelete' i.product.id %}"><i class="fa fa-trash text-primary fs-4" aria-hidden="true"></i></a>
+                    {% else %}
+                     <a href=""><i class="fa fa-minus-circle text-primary fs-4" aria-hidden="true"></i></a>
+                    <a href=""><i class="fa fa-trash text-primary fs-4" aria-hidden="true"></i></a>
+                    {% endif %}
+                    </td>
+
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+        <div class="col-4">
+            <table class="table table-bordered">
+
+                <tr class="bg-success text-center"><th colspan="4">Check Out</th></tr>
+                <tr class="bg-warning"><td><b>Total : {{total}}</b></td></tr>
+            </table>
+            <div class="d-flex justify-content-between">
+            <a href="{% url 'cart:orderform' %}" class="btn btn-primary">Place Order</a>
+            <a href="" class="btn btn-primary">Continue Shopping</a></div>
+
+        </div>
+
+
+</div>
+
+</div>
+{% endblock %}
+
+

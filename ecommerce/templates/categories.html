@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h2>CATEGORIES PAGE</h2>
+    <div id="slides-shop" class="cover-slides">
+        <ul class="slides-container">
+            <li class="text-center">
+                <img src="{% static 'images/banner-01.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Welcome To <br> Freshshop</strong></h1>
+                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
+                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="{% static 'images/banner-02.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Welcome To <br> Freshshop</strong></h1>
+                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
+                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="{% static 'images/banner-03.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Welcome To <br> Freshshop</strong></h1>
+                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
+                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="slides-navigation">
+            <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        </div>
+    </div>
+<div class="container mt-3 p-3 " style="margin-bottom:100px">
+    <div class="col-12">
+        <h1 class="text-center fw-bold text-dark mt-5 mb-5"><b>Our Collections</b></h1>
+    <p style="text-align:justify; line-height:2 font-size:20px" ><b>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</b></p>
+    </div>
+</div>
+
+    <div class="categories-shop">
+        <div class="container bg-info">
+            <div class="row">
+                {% for i in cat %}
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+                    <div class="shop-cat-box">
+
+                        <img class="img" style="height:300px; width:100%" src="{{i.image.url}}" alt="" />
+                        <br>
+                        <br>
+
+
+                        <h5 class="card-title mb-3 text-center"><b>{{i.name}}</b></h5>
+
+
+                        <h5 class="card-title mb-3 text-dark">{{i.description}}</h5>
+                        <br>
+                        <a class="btn hvr-hover" href="{% url 'shop:products' i.id %}">product</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
